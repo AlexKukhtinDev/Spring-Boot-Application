@@ -1,5 +1,10 @@
 package com.akukhtin.springbootapplication.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class User {
 
     private Long id;
@@ -8,6 +13,9 @@ public class User {
     private char[] password;
     private char[] confirmPassword;
     private Country country;
+
+    public User() {
+    }
 
     public User(String name, String surname, char[] password, Country country) {
         this.name = name;
