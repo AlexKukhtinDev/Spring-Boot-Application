@@ -19,13 +19,13 @@ public class UserDto {
     private String surname;
     @NotEmpty
     @NotNull
-    private char[] password;
+    private String password;
     @NotEmpty
     @NotNull
     private Country country;
 
     public UserDto(@NotEmpty @NotNull String name, @NotEmpty @NotNull String surname,
-                   @NotEmpty @NotNull char[] password, @NotEmpty @NotNull Country country) {
+                   @NotEmpty @NotNull String password, @NotEmpty @NotNull Country country) {
         this.name = name;
         this.surname = surname;
         this.password = password;

@@ -1,6 +1,7 @@
 package com.akukhtin.springbootapplication.service.impl;
 
 import com.akukhtin.springbootapplication.dto.UserDto;
+import com.akukhtin.springbootapplication.exception.UserNotFoundException;
 import com.akukhtin.springbootapplication.model.User;
 import com.akukhtin.springbootapplication.repository.UserRepository;
 import com.akukhtin.springbootapplication.service.UserService;
@@ -14,13 +15,13 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public Optional<User> update(Long id, UserDto userDto) {
-        User newUser = userRepository.findById(id).orElseThrow();
+    public User update(Long id, UserDto userDto) {
+        User newUser = userRepository.getOne(id);
         newUser.setName(userDto.getName());
         newUser.setSurname(userDto.getSurname());
         newUser.setPassword(userDto.getPassword());
         newUser.setCountry(userDto.getCountry());
-        return Optional.of(newUser);
+        return newUser;
     }
 
     @Override
@@ -29,9 +30,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> create(User user) {
+    public User create(User user) {
         User saveUser = userRepository.save(user);
-        return Optional.ofNullable(saveUser);
+        return saveUser;
     }
 
     @Override

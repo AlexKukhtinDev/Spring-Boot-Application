@@ -1,7 +1,7 @@
 package com.akukhtin.springbootapplication.controller;
 
 import com.akukhtin.springbootapplication.dto.UserDto;
-import com.akukhtin.springbootapplication.dto.util.UtilDto;
+import com.akukhtin.springbootapplication.dto.util.UserDtoConverter;
 import com.akukhtin.springbootapplication.exception.UserNotFoundException;
 import com.akukhtin.springbootapplication.model.User;
 import com.akukhtin.springbootapplication.service.UserService;
@@ -26,9 +26,9 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public void add(@Valid @RequestBody UserDto userDto) {
-        userService.create(UtilDto.createUserFromDto(userDto));
+        userService.create(UserDtoConverter.createUserFromDto(userDto));
     }
 
     @GetMapping("/{userId}")
@@ -44,7 +44,6 @@ public class UserController {
 
     @PutMapping("/{userId}")
     public User update(@PathVariable("userId") Long userId, UserDto userDto) {
-        return userService.update(userId, userDto).orElseThrow(() ->
-                new UserNotFoundException("User with Id " + userId + " not found"));
+        return userService.update(userId, userDto);
     }
 }
