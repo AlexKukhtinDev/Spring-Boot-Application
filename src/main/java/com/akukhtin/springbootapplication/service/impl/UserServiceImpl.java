@@ -1,7 +1,6 @@
 package com.akukhtin.springbootapplication.service.impl;
 
 import com.akukhtin.springbootapplication.dto.UserDto;
-import com.akukhtin.springbootapplication.exception.UserNotFoundException;
 import com.akukhtin.springbootapplication.model.User;
 import com.akukhtin.springbootapplication.repository.UserRepository;
 import com.akukhtin.springbootapplication.service.UserService;
