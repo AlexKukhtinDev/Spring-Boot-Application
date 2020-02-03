@@ -23,6 +23,8 @@ public class UserDto {
     @NotEmpty
     @NotNull
     private Country country;
+    @NotEmpty
+    @NotNull
     private String email;
 
     public UserDto(@NotEmpty @NotNull String name, @NotEmpty @NotNull String surname,
