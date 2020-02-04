@@ -43,7 +43,7 @@ public class User {
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
-    private Set<Role> roles =new HashSet<Role>();
+    private Set<Role> roles = new HashSet<Role>();
 
     public User(String name, String surname, String password, Country country, String email) {
         this.name = name;
