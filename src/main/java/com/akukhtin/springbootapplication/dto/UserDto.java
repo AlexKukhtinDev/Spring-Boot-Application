@@ -23,12 +23,17 @@ public class UserDto {
     @NotEmpty
     @NotNull
     private Country country;
+    @NotEmpty
+    @NotNull
+    private String email;
 
     public UserDto(@NotEmpty @NotNull String name, @NotEmpty @NotNull String surname,
-                   @NotEmpty @NotNull String password, @NotEmpty @NotNull Country country) {
+                   @NotEmpty @NotNull String password, @NotEmpty @NotNull Country country,
+                   @NotEmpty @NotNull String email) {
         this.name = name;
         this.surname = surname;
         this.password = password;
         this.country = country;
+        this.email = email;
     }
 }
