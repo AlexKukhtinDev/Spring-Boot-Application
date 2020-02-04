@@ -12,4 +12,7 @@ public interface UserService {
     User create(User user);
 
     Optional<User> getUserById(Long userId);
+
+    Optional<User> findByUsername(String username);
+    Optional<User> findByEmail(String email);
 }

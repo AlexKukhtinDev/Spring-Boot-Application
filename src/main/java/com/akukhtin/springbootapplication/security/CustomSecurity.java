@@ -14,7 +14,7 @@ public class CustomSecurity extends WebSecurityConfigurerAdapter {
         auth
                 .inMemoryAuthentication()
                 .withUser("user")
-                .password("1")
+                .password("{noop}1")
                 .roles("USER")
                 .and()
                 .withUser("admin")

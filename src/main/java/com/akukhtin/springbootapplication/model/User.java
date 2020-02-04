@@ -28,11 +28,14 @@ public class User {
     private String confirmPassword;
     @Column(name = "country")
     private Country country;
+    @Column(name = "email")
+    private String email;
 
-    public User(String name, String surname, String password, Country country) {
+    public User(String name, String surname, String password, Country country, String email) {
         this.name = name;
         this.surname = surname;
         this.password = password;
         this.country = country;
+        this.email = email;
     }
 }
