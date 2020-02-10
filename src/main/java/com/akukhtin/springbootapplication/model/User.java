@@ -36,8 +36,10 @@ public class User {
     private String confirmPassword;
     @Column(name = "country")
     private Country country;
-    @Column(name = "email")
+    @Column(name = "email",unique = true)
     private String email;
+    @Column(name = "username")
+    private String username;
     @ManyToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
@@ -45,12 +47,14 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
     private Set<Role> roles = new HashSet<Role>();
 
-    public User(String name, String surname, String password, Country country, String email) {
+    public User(String name, String surname, String password,
+                Country country, String email, String username) {
         this.name = name;
         this.surname = surname;
         this.password = password;
         this.country = country;
         this.email = email;
+        this.username = username;
     }
 
     public User(String name, String surname, String password, String confirmPassword,
@@ -65,10 +69,10 @@ public class User {
     }
 
     public Set<String> getRolesString() {
-        Set<String> list = new HashSet<>();
+        Set<String> roleSet = new HashSet<>();
         for (Role role : roles) {
-            list.add(role.getRoleName());
+            roleSet.add(role.getRoleName());
         }
-        return list;
+        return roleSet;
     }
 }
